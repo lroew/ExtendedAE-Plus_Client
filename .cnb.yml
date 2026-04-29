@@ -1,4 +1,4 @@
-main:
+dev:
   push: &build
     - name: Build
       retry: 1
