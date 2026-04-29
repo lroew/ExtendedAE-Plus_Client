@@ -17,9 +17,9 @@ enum class EAEPIcon(val x: Int, val y: Int, val width: Int = 16, val height: Int
 
  override val aeIcon: Icon
  get() = when (this) {
- SAVE_CENTER -> Icon.STORAGE_BUS
- SAVE_UP -> Icon.ADD
- SAVE_DOWN -> Icon.REMOVE
+ SAVE_CENTER -> Icon.BACK
+ SAVE_UP -> Icon.ARROW_RIGHT
+ SAVE_DOWN -> Icon.ARROW_LEFT
  }
 
  @JvmRecord

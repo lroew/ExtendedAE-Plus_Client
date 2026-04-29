@@ -16,8 +16,8 @@ enum class EAEPActionItems(
  ALIAS_ADD(EAEPIcon.SAVE_UP, Component.translatable("key.extendedae_plus_client.alias_add"), Component.translatable("tooltip.extendedae_plus_client.alias_add"), "provider_list"),
  ALIAS_REMOVE(EAEPIcon.SAVE_DOWN, Component.translatable("key.extendedae_plus_client.alias_remove"), Component.translatable("tooltip.extendedae_plus_client.alias_remove"), "provider_list"),
 
- SELECT_ALL(fromAEIcon(Icon.SEARCH_START), Component.translatable("key.extendedae_plus_client.select_all"), Component.translatable("tooltip.extendedae_plus_client.select_all"), "provider_list"),
- DESELECT_ALL(fromAEIcon(Icon.SEARCH_CANCEL), Component.translatable("key.extendedae_plus_client.deselect_all"), Component.translatable("tooltip.extendedae_plus_client.deselect_all"), "provider_list"),
+ SELECT_ALL(fromAEIcon(Icon.SCHEDULING_DEFAULT), Component.translatable("key.extendedae_plus_client.select_all"), Component.translatable("tooltip.extendedae_plus_client.select_all"), "provider_list"),
+ DESELECT_ALL(fromAEIcon(Icon.TOOLBAR_BUTTON_BACKGROUND), Component.translatable("key.extendedae_plus_client.deselect_all"), Component.translatable("tooltip.extendedae_plus_client.deselect_all"), "provider_list"),
 
  ;
 

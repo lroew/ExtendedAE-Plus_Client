@@ -159,7 +159,7 @@ class ScreenProviderList<TMenu : PatternEncodingTermMenu, TScreen : PatternEncod
 
  override fun drawFG(guiGraphics: GuiGraphics, offsetX: Int, offsetY: Int, mouseX: Int, mouseY: Int) {
  val textColor = this.style.getColor(PaletteColor.DEFAULT_TEXT_COLOR).toARGB()
- val highlightColor = this.style.getColor(PaletteColor.TITLE_FORMAT_COLOR).toARGB()
+ val highlightColor = 0xFF55FF55.toInt()
  val indexScroll = this.scrollbar.currentScroll
 
  for (indexRow in 0..<this.visibleRows) {
