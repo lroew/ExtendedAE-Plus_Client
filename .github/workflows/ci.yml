@@ -58,3 +58,14 @@ jobs:
         with:
           name: "${{ steps.properties.outputs.mod_name }} ${{ steps.version.outputs.version }}"
           path: build/libs/ExtendedAE Plus Client-${{ steps.version.outputs.version }}.jar
+
+      - name: 自动释放
+        if: github.ref == format('refs/heads/{0}', github.event.repository.default_branch)
+        uses: marvinpinto/action-automatic-releases@v1.2.1
+        with:
+          repo_token: "${{ secrets.GITHUB_TOKEN }}"
+          automatic_release_tag: "jar"
+          prerelease: true
+          title: "自动构建版本"
+          files: |
+            build/libs/*.jar
