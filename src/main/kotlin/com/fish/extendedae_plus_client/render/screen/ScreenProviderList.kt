@@ -33,7 +33,6 @@ import net.minecraft.client.renderer.Rect2i
 import net.minecraft.locale.Language
 import net.minecraft.network.chat.Component
 import net.minecraft.sounds.SoundEvents
-import net.minecraftforge.client.event.InputEvent
 import org.lwjgl.glfw.GLFW
 import java.util.function.Consumer
 import kotlin.math.max
@@ -160,6 +159,7 @@ class ScreenProviderList<TMenu : PatternEncodingTermMenu, TScreen : PatternEncod
 
  override fun drawFG(guiGraphics: GuiGraphics, offsetX: Int, offsetY: Int, mouseX: Int, mouseY: Int) {
  val textColor = this.style.getColor(PaletteColor.DEFAULT_TEXT_COLOR).toARGB()
+ val highlightColor = this.style.getColor(PaletteColor.TITLE_FORMAT_COLOR).toARGB()
  val indexScroll = this.scrollbar.currentScroll
 
  for (indexRow in 0..<this.visibleRows) {
@@ -187,11 +187,7 @@ class ScreenProviderList<TMenu : PatternEncodingTermMenu, TScreen : PatternEncod
  this.font.substrByWidth(name, TEXT_MAX_WIDTH - 10)
  )
 
- val finalColor = if (isSelected) {
- this.style.getColor(PaletteColor.TITLE_FORMAT_COLOR).toARGB()
- } else {
- textColor
- }
+ val finalColor = if (isSelected) highlightColor else textColor
 
  guiGraphics.drawString(
  this.font, text, GUI_PADDING_X + PATTERN_PROVIDER_NAME_MARGIN_X + 10,
@@ -200,7 +196,7 @@ class ScreenProviderList<TMenu : PatternEncodingTermMenu, TScreen : PatternEncod
 
  if (isSelected) {
  val checkboxText = Component.literal("[x]")
- .withStyle(if (isSelected) ChatFormatting.GREEN else ChatFormatting.GRAY)
+ .withStyle(ChatFormatting.GREEN)
  guiGraphics.drawString(
  this.font, checkboxText,
  GUI_PADDING_X + TEXT_MAX_WIDTH - 10,
@@ -455,11 +451,7 @@ class ScreenProviderList<TMenu : PatternEncodingTermMenu, TScreen : PatternEncod
  this.selectedProviders.add(i)
  }
  Minecraft.getInstance().player?.displayClientMessage(
- UtilKeyBuilder.of(UtilKeyBuilder.tooltip)
- .addStr("provider_list")
- .branch("batch_select_success")
- .args(this.selectedProviders.size)
- .build(),
+ Component.translatable("tooltip.extendedae_plus_client.provider_list.batch_select_success", this.selectedProviders.size),
  false
  )
  }
@@ -469,11 +461,7 @@ class ScreenProviderList<TMenu : PatternEncodingTermMenu, TScreen : PatternEncod
  this.selectedProviders.clear()
  if (count > 0) {
  Minecraft.getInstance().player?.displayClientMessage(
- UtilKeyBuilder.of(UtilKeyBuilder.tooltip)
- .addStr("provider_list")
- .branch("batch_select_success")
- .args(count)
- .build(),
+ Component.translatable("tooltip.extendedae_plus_client.provider_list.no_selection"),
  false
  )
  }
@@ -559,11 +547,7 @@ class ScreenProviderList<TMenu : PatternEncodingTermMenu, TScreen : PatternEncod
  this.select(indexProvider)
  } else {
  Minecraft.getInstance().player?.displayClientMessage(
- UtilKeyBuilder.of(UtilKeyBuilder.tooltip)
- .addStr("provider_list")
- .branch("batch_select_success")
- .args(this.selectedProviders.size)
- .build(),
+ Component.translatable("tooltip.extendedae_plus_client.provider_list.batch_select_success", this.selectedProviders.size),
  false
  )
  }

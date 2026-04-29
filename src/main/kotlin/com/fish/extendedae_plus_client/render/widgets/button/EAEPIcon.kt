@@ -5,7 +5,7 @@ import appeng.client.gui.style.Blitter
 import com.fish.extendedae_plus_client.ExtendedAEPlusClient
 import net.minecraft.resources.ResourceLocation
 
-enum class EAEPIcon(val x: Int, val Y: Int, val width: Int = 16, val height: Int = 16) : IButtonIcon {
+enum class EAEPIcon(val x: Int, val y: Int, val width: Int = 16, val height: Int = 16) : IButtonIcon {
  SAVE_CENTER(0, 0),
  SAVE_UP(16, 0),
  SAVE_DOWN(32, 0),
@@ -13,13 +13,13 @@ enum class EAEPIcon(val x: Int, val Y: Int, val width: Int = 16, val height: Int
 
  override val blitter: Blitter
  get() = Blitter.texture(TEXTURE, TEXTURE_WIDTH, TEXTURE_HEIGHT)
- .src(x, Y, width, height)
+ .src(x, y, width, height)
 
  override val aeIcon: Icon
  get() = when (this) {
- SAVE_CENTER -> Icon.SEARCH_START
- SAVE_UP -> Icon.PLUS
- SAVE_DOWN -> Icon.MINUS
+ SAVE_CENTER -> Icon.STORAGE_BUS
+ SAVE_UP -> Icon.ADD
+ SAVE_DOWN -> Icon.REMOVE
  }
 
  @JvmRecord
